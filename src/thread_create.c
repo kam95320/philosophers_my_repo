@@ -1,0 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   thread_create.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/26 17:58:04 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/10/02 15:52:20 by kahoumou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/philosophers.h"
+
+int thread_create(t_data  *data)
+{
+    //  printf(" begening thread_create\n");
+    int i;
+    
+    i =  0;
+     data -> first_timestamp  =  timestamp();
+    while(i < data -> number_of_philo)
+    {
+        //  printf("begin is inside  while loop of  thread_create\n");
+        if(pthread_create(&data->philosophers[i].thread_id, NULL, algo_of_dijkstra, &data->philosophers[i]) != 0)
+        {
+            printf("probleme with pthread_create\n");
+            return(false);
+        }
+        i ++;
+    }
+    i = 0;
+	while (i <  data->number_of_philo)
+	{
+		if(pthread_join(data -> philosophers[i].thread_id, NULL)!=  0)
+		{
+			printf("probleme with  pthread_join  in algo_of_dijkstra\n");
+            return(false);
+			
+		}
+        // printf("thread of  philosophe  id =  %p is  execute\n",  (void *)data -> philosophers[i].thread_id);
+        // printf("the philosophe nb of philo is =  %d is execute\n",  i);
+        i++;
+	}
+    // printf(" end thread_create\n");
+    return(true); 
+}
