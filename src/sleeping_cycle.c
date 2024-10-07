@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eat.c                                              :+:      :+:    :+:   */
+/*   sleeping_cycle.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 13:43:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/02 17:26:27 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/10/03 14:41:40 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/10/07 19:48:02 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-
-void  eat(t_data  *data, t_philosopher  *philo)
+static  void	sleep_routine(t_data *data, t_philosopher *philo)
 {
-    
-    pthread_mutex_lock(&(data -> protect_meal_data));
-    data_print(philo,  "is eating");
-    philo -> time_last_meal =  timestamp();
-    pthread_mutex_unlock(&(data -> protect_meal_data));
-    usleep(data->time_to_eat);
-    (philo -> nb_cycle) ++;
-   
+	(void)data;
+	
+	data_print(philo, "is sleeping");
+	usleep(data->time_to_sleep * 1000);
+}
+void	sleeping_cycle(t_philosopher *philo, t_data *data)
+{
+	put_forks(philo, data);
+	data_print(philo, "is sleeping");
+	sleep_routine(data, philo);
 }

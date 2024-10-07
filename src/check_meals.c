@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eat.c                                              :+:      :+:    :+:   */
+/*   check_meals.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 13:43:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/02 17:26:27 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/10/03 14:02:34 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/10/03 14:03:01 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-
-void  eat(t_data  *data, t_philosopher  *philo)
+int	check_meals(t_data *data, int nb)
 {
-    
-    pthread_mutex_lock(&(data -> protect_meal_data));
-    data_print(philo,  "is eating");
-    philo -> time_last_meal =  timestamp();
-    pthread_mutex_unlock(&(data -> protect_meal_data));
-    usleep(data->time_to_eat);
-    (philo -> nb_cycle) ++;
-   
+	int	i;
+
+	i = nb;
+	if (data->number_of_meals != 0)
+	{
+		if (i <= data->number_of_meals)
+		{
+			i += 1;
+			return (true);
+		}
+		return (false);
+	}
+	return (0);
 }

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eat.c                                              :+:      :+:    :+:   */
+/*   is_dead.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 13:43:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/02 17:26:27 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/10/03 14:04:35 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/10/03 14:05:28 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-
-void  eat(t_data  *data, t_philosopher  *philo)
+void	is_dead(t_philosopher *philo, t_data *data)
 {
-    
-    pthread_mutex_lock(&(data -> protect_meal_data));
-    data_print(philo,  "is eating");
-    philo -> time_last_meal =  timestamp();
-    pthread_mutex_unlock(&(data -> protect_meal_data));
-    usleep(data->time_to_eat);
-    (philo -> nb_cycle) ++;
-   
+	data_print(philo, "died");
+	pthread_mutex_lock(&data->protect_dead_var);
+	data->are_you_dead = 1;
+	pthread_mutex_unlock(&data->protect_dead_var);
 }

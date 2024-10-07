@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:54:04 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/02 16:57:04 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:00:04 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 # include <limits.h>
 # include <pthread.h>
 # include <stdbool.h>
+# include <stdio.h>
 # include <sys/time.h>
 # include <time.h>
 # include <unistd.h>
-#include <stdio.h>
-
 
 typedef struct s_philosopher
 {
@@ -67,8 +66,17 @@ long long				time_diff(long long past, long long pres);
 void					is_dead(t_philosopher *philo, t_data *data);
 int						ft_isdigit(int character);
 int						ft_atoi(char *str);
-
-// void					data_print(t_philosopher *philo, char *str, bool dead);
-void data_print(t_philosopher *philo, char *str);
+void					destroy_all_mutex(t_data *data, int nb);
+// int						philo_must_die(t_philosopher *philo, t_data *data,
+// 							int nb);
+int						ave_you_one_arg(t_philosopher *philo, t_data *data);
+void					sleeping_cycle(t_philosopher *philo, t_data *data);
+int						philo_cycle(t_philosopher *philo, t_data *data);
+int						check_meals(t_data *data, int nb);
+void					is_dead(t_philosopher *philo, t_data *data);
+int	philo_must_die(t_philosopher *philo, t_data *data);
+// void					data_print(t_philosopher *philo, char *str,
+// bool dead);
+void					data_print(t_philosopher *philo, char *str);
 
 #endif // PHILOSPERS_H

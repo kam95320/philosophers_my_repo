@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:56:18 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/02 15:50:31 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:26:49 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void  debug_init_philo(t_data  *data, int i)
 }
 int	init_philo(t_data *data)
 {
-	// printf("begin init_philo\n");
+	
 	int i;
 	i = data->number_of_philo;
 
@@ -37,8 +37,7 @@ int	init_philo(t_data *data)
 		data->philosophers[i].right_fork_id = (i + 1) % data->number_of_philo;
 		data->philosophers[i].time_last_meal = 0;
 		data->philosophers[i].data =  data;
-		// debug_init_philo(data, i);
-		// printf("end of init_philo\n");
+		
 	}
 
 	return (true);

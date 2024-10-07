@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eat.c                                              :+:      :+:    :+:   */
+/*   philo_cycle.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 13:43:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/02 17:26:27 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/10/04 13:20:09 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/10/07 19:49:50 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
 
-void  eat(t_data  *data, t_philosopher  *philo)
+int	philo_cycle(t_philosopher *philo, t_data *data)
 {
-    
-    pthread_mutex_lock(&(data -> protect_meal_data));
-    data_print(philo,  "is eating");
-    philo -> time_last_meal =  timestamp();
-    pthread_mutex_unlock(&(data -> protect_meal_data));
-    usleep(data->time_to_eat);
-    (philo -> nb_cycle) ++;
-   
+	//  printf("in philo_cycle the begining\n");
+	// int	nb;
+	// nb = -1;
+	data_print(philo, "is thinking");
+	philosopher_sleeping(data->time_to_sleep, data);
+	take_forks(philo, data);
+	eat(data, philo);
+	philosopher_sleeping(data->time_to_eat, data);
+	if (false == philo_must_die(philo, data))
+		return (false);
+	 sleeping_cycle(philo, data);
+	return (true);
 }

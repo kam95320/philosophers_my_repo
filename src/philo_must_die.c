@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eat.c                                              :+:      :+:    :+:   */
+/*   philo_must_die.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 13:43:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/02 17:26:27 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/10/03 15:32:54 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/10/07 19:17:49 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-
-void  eat(t_data  *data, t_philosopher  *philo)
+int	philo_must_die(t_philosopher *philo, t_data *data)
 {
-    
-    pthread_mutex_lock(&(data -> protect_meal_data));
-    data_print(philo,  "is eating");
-    philo -> time_last_meal =  timestamp();
-    pthread_mutex_unlock(&(data -> protect_meal_data));
-    usleep(data->time_to_eat);
-    (philo -> nb_cycle) ++;
-   
+	
+	// printf(" begin of philo_must_die\n");
+	if ((timestamp() - philo->time_last_meal) > data->time_to_death)
+	{
+		// printf("end of philo_must_die\n");
+		is_dead(philo, data);
+		// destroy_all_mutex(data, nb);
+		return (false);
+	}
+	if (data->time_to_death < (data->time_to_sleep + data->time_to_eat))
+	{
+		is_dead(philo, data);
+		return (false);
+	}
+	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 19:17:49 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/01 13:42:37 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:38:41 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	data_print(t_philosopher *philo, char *str)
 {
-	// printf("begin of data print pass\n");
-	// if (philo->data->are_you_dead == 1)
-	// 	return ;
+	
+	// for(int i =  0;  i == 0;  i ++)
+	// 	printf("data_print begin pass = %d \n", i);
+	
 	pthread_mutex_lock(&philo->data->protect_writing_data);
 	printf("%lld %d %s\n", timestamp() - philo->data->first_timestamp,
 			philo -> id,str);
 	pthread_mutex_unlock(&philo->data->protect_writing_data);
-	// printf("end of data print pass\n");
+	// for(int i =  1;  i <= 1;  i ++)
+	// printf("data_print end  pass  = %d \n\n", i);
+	
 }

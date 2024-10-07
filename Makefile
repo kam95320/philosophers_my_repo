@@ -6,13 +6,14 @@
 #    By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 18:23:42 by kahoumou          #+#    #+#              #
-#    Updated: 2024/10/02 16:58:24 by kahoumou         ###   ########.fr        #
+#    Updated: 2024/10/07 20:07:14 by kahoumou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philosophers
+NAME = philo
 CC = gcc
-CFLAGS =  -Werror -Wextra -Wall -g3
+# CFLAGS =  -Werror -Wextra -Wall -g3 -pthread  -fsanitize=thread
+CFLAGS =  -Werror -Wextra -Wall -g3 -pthread  
 RM = rm -rf
 
 # Liste des sources principales
@@ -30,7 +31,14 @@ SRCS =	src/algo_of_dijkstra.c\
 		src/main.c\
 		src/init_philo.c\
 		src/ft_atoi.c\
-		src/ft_isdigit.c
+		src/ft_isdigit.c\
+		src/destroy_all_mutex.c\
+		src/philo_must_die.c\
+		src/check_meals.c\
+		src/ave_you_one_arg.c\
+		src/sleeping_cycle.c\
+		src/is_dead.c\
+		src/philo_cycle.c
 		
 
 # Cibles pour le projet principal

@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:40:00 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/01 13:39:16 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:25:58 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int check_argument(int argc, char *argv[])
 {
-    // printf("begin  check  arguments\n");
+   
     int i;
     int j;
     
@@ -35,6 +35,6 @@ int check_argument(int argc, char *argv[])
             j ++;
         }
         
-    // printf("end  check  arguments\n");
+  
     return(true);
 }

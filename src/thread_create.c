@@ -6,11 +6,46 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:58:04 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/02 15:52:20 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:16:57 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
+
+
+// int thread_create(t_data  *data, t_philosopher  *philo)
+// { 
+//     // printf("thread_create begin\n");
+    
+//     int i;
+//     (void)philo;
+//     i =  -1;
+//      data -> first_timestamp  =  timestamp();
+//     while(++i < data -> number_of_philo)
+//     {
+       
+//         if(pthread_create(&data->philosophers[i].thread_id, NULL, algo_of_dijkstra, &data->philosophers[i]) != 0)
+//         {
+//             printf("probleme with pthread_create\n");
+//             return(false);
+//         }
+//     }
+//     i = -1;
+// 	while (++i <  data->number_of_philo)
+// 	{
+// 		if(pthread_join(data -> philosophers[i].thread_id, NULL)!=  0)
+// 		{
+// 			printf("probleme with  pthread_join  in algo_of_dijkstra\n");
+//             return(false);
+// 		}
+//         destroy_all_mutex(data, i);
+// 	}
+//     // printf("thread_create  end\n");
+    
+
+//     return(true); 
+// }
+
 
 int thread_create(t_data  *data)
 {
