@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:54:04 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/07 16:00:04 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:36:41 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ typedef struct s_data
 	int					nb_philo;
 	int					are_you_dead;
 	int					limit_simulation;
+	int					balise_death;
 	long long			first_timestamp;
 	struct s_variables	*variable;
 	pthread_mutex_t		protect_meal_data;
 	pthread_mutex_t		protect_forks_data[250];
 	pthread_mutex_t		protect_writing_data;
 	pthread_mutex_t		protect_dead_var;
+	pthread_mutex_t		protect_balise_death;
 	t_philosopher		philosophers[250];
 }						t_data;
 

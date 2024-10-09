@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:58:04 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/07 15:16:57 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:49:56 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,25 @@ int thread_create(t_data  *data)
 {
     //  printf(" begening thread_create\n");
     int i;
-    
     i =  0;
+    data ->are_you_dead =  0;
      data -> first_timestamp  =  timestamp();
     while(i < data -> number_of_philo)
     {
+        
         //  printf("begin is inside  while loop of  thread_create\n");
         if(pthread_create(&data->philosophers[i].thread_id, NULL, algo_of_dijkstra, &data->philosophers[i]) != 0)
         {
             printf("probleme with pthread_create\n");
             return(false);
         }
-        i ++;
+        // printf("balise_death_value insde while ptrhead =  %d\n", data-> balise_death);
+         i ++;
     }
     i = 0;
 	while (i <  data->number_of_philo)
 	{
+
 		if(pthread_join(data -> philosophers[i].thread_id, NULL)!=  0)
 		{
 			printf("probleme with  pthread_join  in algo_of_dijkstra\n");
