@@ -6,19 +6,19 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:12:17 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/10 15:54:52 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/10 18:51:50 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSPERS_H
-# define PHILOSPERS_H
-	# include <limits.h>	
-	# include <pthread.h>
-	# include <stdbool.h>	
-	# include <stdio.h>
-	# include <sys/time.h>
-	# include <time.h>
-	# include <unistd.h>
+#ifndef PHILOSOPHERS_H
+# define PHILOSPHERS_H
+# include <limits.h>
+# include <pthread.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <sys/time.h>
+# include <time.h>
+# include <unistd.h>
 
 typedef struct s_philosopher
 {
@@ -77,4 +77,4 @@ int						philo_must_die(t_philosopher *philo, t_data *data);
 int						dead_or_not(t_data *data);
 void					data_print(t_philosopher *philo, char *str);
 
-#endif // PHILOSPERS_H
+#endif
