@@ -6,14 +6,15 @@
 #    By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 18:23:42 by kahoumou          #+#    #+#              #
-#    Updated: 2024/10/07 20:07:14 by kahoumou         ###   ########.fr        #
+#    Updated: 2024/10/10 17:13:44 by kahoumou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = gcc
-# CFLAGS =  -Werror -Wextra -Wall -g3 -pthread  -fsanitize=thread
-CFLAGS =  -Werror -Wextra -Wall -g3 -pthread  
+#  CFLAGS =  -Werror -Wextra -Wall -g3 -pthread  -fsanitize=thread
+#  --tool=helgrind --leak-check=full --show-leak-kinds=all
+CFLAGS =  -Werror -Wextra -Wall -g3  
 RM = rm -rf
 
 # Liste des sources principales
@@ -38,7 +39,9 @@ SRCS =	src/algo_of_dijkstra.c\
 		src/ave_you_one_arg.c\
 		src/sleeping_cycle.c\
 		src/is_dead.c\
-		src/philo_cycle.c
+		src/philo_cycle.c\
+		src/dead_or_not.c
+		
 		
 
 # Cibles pour le projet principal

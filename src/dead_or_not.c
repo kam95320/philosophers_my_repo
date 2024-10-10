@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_meals.c                                      :+:      :+:    :+:   */
+/*   dead_or_not.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 14:02:34 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/10 16:03:14 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/10/09 18:29:37 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/10/10 16:07:40 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	check_meals(t_data *data, int nb)
+int	dead_or_not(t_data *data)
 {
-	int	i;
-
-	i = nb;
-	if (data->number_of_meals != 0)
+	pthread_mutex_lock(&data->protect_dead_var);
+	if (1 == data->are_you_dead)
 	{
-		if (i <= data->number_of_meals)
-		{
-			i += 1;
-			return (true);
-		}
+		pthread_mutex_unlock(&data->protect_dead_var);
 		return (false);
 	}
-	return (false);
+	pthread_mutex_unlock(&data->protect_dead_var);
+	return (true);
 }

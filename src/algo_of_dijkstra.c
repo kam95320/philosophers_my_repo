@@ -6,38 +6,18 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:08:33 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/09 15:45:35 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:29:11 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-
-void	*algo_of_dijkstra(void *arg)
+void	*algo_of_dijkstra_pt2(t_philosopher *philo, t_data *data, int nb)
 {
-	
-	t_philosopher	*philo;
-	t_data			*data;
-	int				nb;
-
-	nb = -1;
-	philo = (t_philosopher *)arg;
-	data = philo->data;
-	if (data->number_of_philo == 1)
+	while (1)
 	{
-		printf("condition just  one  arg\n\n");
-		data_print(philo, "has taken a fork");
-		philosopher_sleeping(data->time_to_death, data);
-		is_dead(philo, data);
-		return (0);
-	}
-	if (philo->id % 2)
-	{
-		usleep(1500);
-	}
-	while (0 == data->are_you_dead)
-	{
-		
+		if (false == dead_or_not(data))
+			return (NULL);
 		if (data->number_of_meals > 0)
 		{
 			nb += 1;
@@ -48,7 +28,30 @@ void	*algo_of_dijkstra(void *arg)
 			break ;
 		if (false == philo_cycle(philo, data))
 			return (NULL);
-		
 	}
+	return (NULL);
+}
+
+void	*algo_of_dijkstra(void *arg)
+{
+	t_philosopher	*philo;
+	t_data			*data;
+	int				nb;
+
+	nb = 0;
+	philo = (t_philosopher *)arg;
+	data = philo->data;
+	if (data->number_of_philo == 1)
+	{
+		data_print(philo, "has taken a fork");
+		philosopher_sleeping(data->time_to_death, data);
+		is_dead(philo, data);
+		return (0);
+	}
+	if (philo->id % 2)
+	{
+		usleep(1500);
+	}
+	algo_of_dijkstra_pt2(philo, data, nb);
 	return (NULL);
 }

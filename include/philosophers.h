@@ -5,20 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 13:54:04 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/09 13:36:41 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/10/10 15:12:17 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/10/10 15:54:52 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSPERS_H
 # define PHILOSPERS_H
-# include <limits.h>
-# include <pthread.h>
-# include <stdbool.h>
-# include <stdio.h>
-# include <sys/time.h>
-# include <time.h>
-# include <unistd.h>
+	# include <limits.h>	
+	# include <pthread.h>
+	# include <stdbool.h>	
+	# include <stdio.h>
+	# include <sys/time.h>
+	# include <time.h>
+	# include <unistd.h>
 
 typedef struct s_philosopher
 {
@@ -65,20 +65,16 @@ void					*algo_of_dijkstra(void *arg);
 void					put_forks(t_philosopher *philo, t_data *data);
 long long				timestamp(void);
 long long				time_diff(long long past, long long pres);
-void					is_dead(t_philosopher *philo, t_data *data);
 int						ft_isdigit(int character);
 int						ft_atoi(char *str);
 void					destroy_all_mutex(t_data *data, int nb);
-// int						philo_must_die(t_philosopher *philo, t_data *data,
-// 							int nb);
 int						ave_you_one_arg(t_philosopher *philo, t_data *data);
 void					sleeping_cycle(t_philosopher *philo, t_data *data);
 int						philo_cycle(t_philosopher *philo, t_data *data);
 int						check_meals(t_data *data, int nb);
-void					is_dead(t_philosopher *philo, t_data *data);
-int	philo_must_die(t_philosopher *philo, t_data *data);
-// void					data_print(t_philosopher *philo, char *str,
-// bool dead);
+int						is_dead(t_philosopher *philo, t_data *data);
+int						philo_must_die(t_philosopher *philo, t_data *data);
+int						dead_or_not(t_data *data);
 void					data_print(t_philosopher *philo, char *str);
 
 #endif // PHILOSPERS_H

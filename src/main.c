@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:18:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/07 19:49:08 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:00:58 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(int argc, char *argv[])
 		print_msg();
 		return (1);
 	}
-	
 	if (false == check_argument(argc, argv))
 		return (printf("error syntaxe in argument please  write digit\n"), 5);
 	if (0 == convert_digit(argv, &data))
