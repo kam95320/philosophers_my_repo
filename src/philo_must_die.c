@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:32:54 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/10 18:49:10 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:49:18 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static int	max_value(int time_to_eat, int time_to_sleep)
 {
 	if (time_to_eat > time_to_sleep)
-		return (2 * time_to_eat);
+		 return (2 * time_to_eat);
+		
 	return (time_to_eat + time_to_sleep);
 }
 
@@ -29,7 +30,7 @@ int	philo_must_die(t_philosopher *philo, t_data *data)
 	{
 		return (false);
 	}
-	if (philo->data->time_to_eat > philo->time_last_meal)
+	if (philo->data->time_to_eat > philo->data->time_to_death)
 	{
 		return (false);
 	}

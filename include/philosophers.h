@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:12:17 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/10 18:51:50 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:54:24 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_data
 	int					balise_death;
 	long long			first_timestamp;
 	struct s_variables	*variable;
+	pthread_t			death_trhead;
 	pthread_mutex_t		protect_meal_data;
 	pthread_mutex_t		protect_forks_data[250];
 	pthread_mutex_t		protect_writing_data;
@@ -76,5 +77,5 @@ int						is_dead(t_philosopher *philo, t_data *data);
 int						philo_must_die(t_philosopher *philo, t_data *data);
 int						dead_or_not(t_data *data);
 void					data_print(t_philosopher *philo, char *str);
-
+void					*death_checker(void *arg);
 #endif

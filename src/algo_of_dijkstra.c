@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:08:33 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/10 16:29:11 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/12 20:42:41 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ void	*algo_of_dijkstra_pt2(t_philosopher *philo, t_data *data, int nb)
 			if (false == check_meals(data, nb))
 				break ;
 		}
-		if (data->are_you_dead != 0)
-			break ;
+		// if (data->are_you_dead != 0)
+		// 	break ;
 		if (false == philo_cycle(philo, data))
-			return (NULL);
+		{
+			break;
+			
+		}
 	}
 	return (NULL);
 }

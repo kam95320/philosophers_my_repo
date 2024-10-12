@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:46:33 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/10 18:50:28 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/12 20:46:37 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ int	init_mutex(t_data *data)
 {
 	int	j;
 	int	i;
-
+	
 	i = data->number_of_philo;
+	
 	j = 1;
 	while (--i >= 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:42:48 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/10 15:00:32 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:31:12 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long long	timestamp(void)
 {
 	struct timeval	t;
-	int				res;
+	int 	res;
 
 	gettimeofday(&t, NULL);
 	res = (long long)(t.tv_sec)*1000 + ((long long)(t.tv_usec) / 1000);

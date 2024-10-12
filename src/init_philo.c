@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:56:18 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/10 16:16:55 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/12 20:29:37 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,17 @@ int	init_philo(t_data *data)
 	int	i;
 
 	i = data->number_of_philo;
+
 	while (--i >= 0)
 	{
+		data->first_timestamp = timestamp();
 		data->philosophers[i].id = i + 1;
 		data->philosophers[i].nb_cycle = 0;
 		data->philosophers[i].left_fork_id = i;
 		data->philosophers[i].right_fork_id = (i + 1) % data->number_of_philo;
-		data->philosophers[i].time_last_meal = 0;
+		data->philosophers[i].time_last_meal = data->first_timestamp;
 		data->philosophers[i].data = data;
 	}
+	
 	return (true);
 }
