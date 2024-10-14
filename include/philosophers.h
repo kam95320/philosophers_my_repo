@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:12:17 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/12 14:54:24 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:55:27 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data
 	int					limit_simulation;
 	int					balise_death;
 	long long			first_timestamp;
+	pthread_cond_t		death_condition;
 	struct s_variables	*variable;
 	pthread_t			death_trhead;
 	pthread_mutex_t		protect_meal_data;
