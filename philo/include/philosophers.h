@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:12:17 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/18 22:20:56 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/19 18:17:22 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,10 @@ int						philo_must_die(t_philosopher *philo, t_data *data);
 int						dead_or_not(t_data *data);
 void					data_print(t_philosopher *philo, char *str);
 void					*death_checker(void *arg);
-// long					ft_usleep(long data);
 void					ft_usleep(long long time, t_data *data);
-long 					time_usleep(long time, t_data *data);
+long					time_usleep(long time, t_data *data);
 void					smart_sleep(long long time, t_data *rules);
 void					action_print(t_data *rules, int id, char *string);
-// int 				cond_death(long long t_l_m,  long res, t_data *data)
-void *cond_death(t_data *data);
-// void  					time_usleep(  long long  time, t_data *data);
+void					*cond_death(t_data *data);
+void					thread_join(t_data *data);
 #endif

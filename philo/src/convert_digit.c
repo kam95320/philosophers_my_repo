@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:16:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/18 21:26:35 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:21:40 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	convert_digit(char *argv[], t_data *data)
 {
-	// pthread_mutex_lock(&data->protect_dead_var);
 	data->number_of_philo = ft_atoi(argv[1]);
 	data->time_to_death = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);

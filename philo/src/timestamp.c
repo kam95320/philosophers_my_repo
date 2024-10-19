@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:42:48 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/18 21:41:27 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:31:15 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ long long	timestamp(void)
 	int				res;
 
 	gettimeofday(&t, NULL);
-	res = (long long)(t.tv_sec) * 1000 + ((long long)(t.tv_usec) / 1000);
+	res = (long long)(t.tv_sec) *1000 + ((long long)(t.tv_usec) / 1000);
 	return (res);
 }

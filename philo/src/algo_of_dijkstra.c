@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:08:33 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/18 21:43:26 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/19 18:25:56 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	*algo_of_dijkstra(void *arg)
 	nb = 0;
 	philo = (t_philosopher *)arg;
 	data = philo->data;
-	if (philo->id % 2)
-	{
-		usleep(15000);
-	}
 	if (data->number_of_philo == 1)
 	{
 		data_print(philo, "has taken a fork");
 		return (0);
+	}
+	if (philo->id % 2)
+	{
+		usleep(15000);
 	}
 	algo_of_dijkstra_pt2(philo, data, nb);
 	return (NULL);

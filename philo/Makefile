@@ -6,7 +6,7 @@
 #    By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 18:23:42 by kahoumou          #+#    #+#              #
-#    Updated: 2024/10/18 21:54:42 by kahoumou         ###   ########.fr        #
+#    Updated: 2024/10/19 16:01:35 by kahoumou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ SRCS =	src/algo_of_dijkstra.c\
 		src/destroy_all_mutex.c\
 		src/philo_must_die.c\
 		src/check_meals.c\
-		src/sleeping_cycle.c\
 		src/philo_cycle.c\
 		src/dead_or_not.c\
 		src/check_death.c\

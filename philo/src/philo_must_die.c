@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:32:54 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/18 21:39:33 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:25:58 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static int	max_value(int time_to_eat, int time_to_sleep)
 
 int	philo_must_die(t_philosopher *philo, t_data *data)
 {
-	;
 	if ((timestamp() - philo->time_last_meal) > data->time_to_death)
 	{
 		return (false);
