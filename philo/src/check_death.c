@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:33:47 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/19 14:00:01 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:18:13 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	cond_in_if(t_data *data)
 	printf("%lld %d %s\n", timestamp() - data->first_timestamp,
 		data->philosophers->id, "died");
 	data->are_you_dead = 1;
-	data->limit_simulation = 1;
 	data->balise_death = 1;
-	pthread_mutex_unlock(&data->protect_dead_var);
+	pthread_mutex_unlock(&data->mutex.protect_balise_death);
+	pthread_mutex_unlock(&data->mutex.protect_dead_var);
 }
 
 void	*cond_death(t_data *data)
@@ -35,7 +35,7 @@ void	*cond_death(t_data *data)
 		i = -1;
 		while (++i < data->number_of_philo && 0 == data->are_you_dead)
 		{
-			pthread_mutex_lock(&data->protect_dead_var);
+			pthread_mutex_lock(&data->mutex.protect_dead_var);
 			res = (timestamp() - data->philosophers[i].time_last_meal);
 			t_l_m = time_diff(data->philosophers[i].time_last_meal, tim);
 			if (t_l_m > data->time_to_death || res > data->time_to_death)
@@ -43,7 +43,7 @@ void	*cond_death(t_data *data)
 				cond_in_if(data);
 				return (NULL);
 			}
-			pthread_mutex_unlock(&data->protect_dead_var);
+			pthread_mutex_unlock(&data->mutex.protect_dead_var);
 			usleep(100);
 		}
 	}

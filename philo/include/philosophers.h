@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:12:17 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/19 18:17:22 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:17:06 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ typedef struct s_philosopher
 	pthread_t			thread_id;
 }						t_philosopher;
 
+typedef struct l_mutex_lock
+{
+	pthread_mutex_t		protect_meal_data;
+	pthread_mutex_t		protect_writing_data;
+	pthread_mutex_t		protect_dead_var;
+	pthread_mutex_t		protect_balise_death;
+	pthread_mutex_t		protect_time;
+	pthread_mutex_t		protect_data_arg;
+	pthread_mutex_t		protect_philo_var;
+	pthread_mutex_t		protect_philo_last_meal;
+	pthread_mutex_t		protect_limit_simulation;
+
+}						t_mutex_lock;
+
 typedef struct s_data
 {
 	int					number_of_philo;
@@ -45,13 +59,10 @@ typedef struct s_data
 	long long			first_timestamp;
 	pthread_cond_t		death_condition;
 	struct s_variables	*variable;
-	pthread_t			death_trhead;
-	pthread_mutex_t		protect_meal_data;
 	pthread_mutex_t		protect_forks_data[250];
-	pthread_mutex_t		protect_writing_data;
-	pthread_mutex_t		protect_dead_var;
-	pthread_mutex_t		protect_balise_death;
 	t_philosopher		philosophers[250];
+	pthread_t			death_trhead;
+	t_mutex_lock		mutex;
 }						t_data;
 
 int						check_argument(int argc, char *argv[]);

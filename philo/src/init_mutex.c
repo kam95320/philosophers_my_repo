@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:46:33 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/18 21:38:05 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:18:34 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	init_mutex_pt2(t_data *data, int i)
 {
-	if (pthread_mutex_init(&(data->protect_writing_data), NULL) != 0)
+	if (pthread_mutex_init(&(data->mutex.protect_dead_var), NULL) != 0)
+	{
+		printf("errror  with mutex  init  of protect_dead_var  =  %d\n", i);
+		return (false);
+	}
+	if (pthread_mutex_init(&(data->mutex.protect_writing_data), NULL) != 0)
 	{
 		printf("errror  with mutex  init  of protect_writing_data =  %d\n", i);
 		return (false);
 	}
-	if (pthread_mutex_init(&(data->protect_meal_data), NULL) != 0)
+	if (pthread_mutex_init(&(data->mutex.protect_meal_data), NULL) != 0)
 	{
 		printf("errror  with mutex  init  of  protect_meal_data =  %d\n", i);
-		return (false);
-	}
-	if (pthread_mutex_init(&(data->protect_dead_var), NULL) != 0)
-	{
-		printf("errror  with mutex  init  of protect_dead_var  =  %d\n", i);
 		return (false);
 	}
 	return (1);
