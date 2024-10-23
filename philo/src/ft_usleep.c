@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:02:18 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/19 16:42:38 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:19:25 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	ft_usleep(long long time, t_data *data)
 	{
 		if (time_diff(i, timestamp()) >= time)
 			break ;
-		usleep(50);
+		usleep(100);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:12:17 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/21 17:17:06 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:20:03 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ void					smart_sleep(long long time, t_data *rules);
 void					action_print(t_data *rules, int id, char *string);
 void					*cond_death(t_data *data);
 void					thread_join(t_data *data);
+int						verif_sleep(t_data *data);
 #endif

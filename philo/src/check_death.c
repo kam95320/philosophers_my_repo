@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:33:47 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/10/21 17:18:13 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:14:08 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	cond_in_if(t_data *data)
 {
-	printf("%lld %d %s\n", timestamp() - data->first_timestamp,
-		data->philosophers->id, "died");
-	data->are_you_dead = 1;
+	pthread_mutex_lock(&data->mutex.protect_writing_data);
+	printf("%lld %d died\n", timestamp() - data->first_timestamp,
+		data->philosophers->id);
 	data->balise_death = 1;
-	pthread_mutex_unlock(&data->mutex.protect_balise_death);
-	pthread_mutex_unlock(&data->mutex.protect_dead_var);
+	pthread_mutex_unlock(&data->mutex.protect_writing_data);
 }
 
 void	*cond_death(t_data *data)
@@ -33,17 +32,17 @@ void	*cond_death(t_data *data)
 	while (!data->limit_simulation)
 	{
 		i = -1;
-		while (++i < data->number_of_philo && 0 == data->are_you_dead)
+		while (++i < data->number_of_philo && data->are_you_dead == 0)
 		{
-			pthread_mutex_lock(&data->mutex.protect_dead_var);
+			pthread_mutex_lock(&data->mutex.protect_meal_data);
 			res = (timestamp() - data->philosophers[i].time_last_meal);
 			t_l_m = time_diff(data->philosophers[i].time_last_meal, tim);
-			if (t_l_m > data->time_to_death || res > data->time_to_death)
+			pthread_mutex_unlock(&data->mutex.protect_meal_data);
+			if (t_l_m >= data->time_to_death || res > data->time_to_death)
 			{
 				cond_in_if(data);
 				return (NULL);
 			}
-			pthread_mutex_unlock(&data->mutex.protect_dead_var);
 			usleep(100);
 		}
 	}
@@ -60,36 +59,3 @@ void	*death_checker(void *arg)
 	cond_death(data);
 	return (NULL);
 }
-// void	*death_checker(void *arg)
-// {
-// 	t_data		*data;
-// 	long long	t_l_m;
-// 	long long	tim;
-// 	long		res;
-// 	int			i;
-
-// 	data = (t_data *)arg;
-// 	tim = timestamp();
-// 	if (data->number_of_meals > 0)
-// 		return (NULL);
-// 	cond_death(data);
-// 	while (!data->limit_simulation)
-// 	{
-// 		i = -1;
-// 		while (++i < data->number_of_philo && 0 == data->are_you_dead)
-// 		{
-// 			pthread_mutex_lock(&data->protect_dead_var);
-// 			res = (timestamp() - data->philosophers[i].time_last_meal);
-// 			t_l_m = time_diff(data->philosophers[i].time_last_meal, tim);
-// 			cond_death(t_l_m,  res, data);
-// 			if (t_l_m > data->time_to_death || res > data->time_to_death)
-// 			{
-// 				cond_in_if(data);
-// 				return (NULL);
-// 			}
-// 			pthread_mutex_unlock(&data->protect_dead_var);
-// 			usleep(100);
-// 		}
-// 	}
-// return (NULL);
-// }
